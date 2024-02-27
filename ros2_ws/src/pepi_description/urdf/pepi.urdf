@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<robot name="pepi">
+
+    <material name="body_color">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+    <material name="wheel_color">
+        <color rgba="0.90 0.90 0.90 0.9"/>
+    </material>
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.35 0.235 0.018"/>
+            </geometry>
+            <origin xyz="0 0.0 0.009" rpy="0.0 0.0 0.0" />
+            <material name="body_color"/>
+        </visual>
+    </link>
+
+    <link name="right_wheel_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.0825" length="0.045"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+            <material name="wheel_color"/>
+        </visual>
+    </link>
+
+    <link name="left_wheel_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.0825" length="0.045"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+            <material name="wheel_color"/>
+        </visual>
+    </link>
+    
+    <link name="caster_wheel_link">
+        <visual>
+            <geometry>
+                <sphere radius="0.04875"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <material name="wheel_color"/>
+        </visual>
+    </link>
+
+    <link name="base_foot_link">
+        
+    </link>
+
+
+    <joint name="base_right_wheel" type="continuous">
+        <origin xyz="-0.0675 -0.15 -0.015" rpy="0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="right_wheel_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="base_left_wheel" type="continuous">
+        <origin xyz="-0.0675 0.15 -0.015" rpy="0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="left_wheel_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="base_caster_wheel" type="fixed">
+        <origin xyz="0.0825 0.0 -0.04875" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="caster_wheel_link"/>
+        <axis xyz="0.0 0.0 0.0"/>
+    </joint>
+
+    <joint name="base_foo" type="fixed">
+        <origin xyz="0.0 0.0 -0.0975"/>
+        <parent link="base_link"/>
+        <child link="base_foot_link"/>
+        <axis xyz="0.0 0.0 0"/>
+    </joint>
+
+    
+</robot>
