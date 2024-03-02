@@ -20,6 +20,14 @@
             <origin xyz="0 0.0 ${base_thickness/2}" rpy="0.0 0.0 0.0" />
             <material name="body_color"/>
         </visual>
+        <xacro:box_inertia m="5.0" l="${base_lenght}" w="${base_width}" h="${base_thickness}"
+            xyz="0 0.0 ${base_thickness/2}" rpy="0 0 0"/>
+        <collision>
+            <geometry>
+                <box size="${base_lenght} ${base_width} ${base_thickness}"/>
+            </geometry>
+            <origin xyz="0 0.0 ${base_thickness/2}" rpy="0.0 0.0 0.0" />
+        </collision>
     </link>
 
     <link name="right_wheel_link">
@@ -30,6 +38,14 @@
             <origin xyz="0.0 0.0 0.0" rpy="${pi/2.0} 0.0 0.0"/>
             <material name="wheel_color"/>
         </visual>
+        <xacro:cylinder_inertia m="1.5" r="${wheel_radius}" w="${wheel_thickness}"
+            xyz="0.0 0.0 0.0" rpy="${pi/2.0} 0.0 0.0"/>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi/2.0} 0.0 0.0"/>
+        </collision>
     </link>
 
     <link name="left_wheel_link">
@@ -40,6 +56,14 @@
             <origin xyz="0.0 0.0 0.0" rpy="${pi / 2.0} 0.0 0.0"/>
             <material name="wheel_color"/>
         </visual>
+        <xacro:cylinder_inertia m="1.5" r="${wheel_radius}" w="${wheel_thickness}"
+            xyz="0.0 0.0 0.0" rpy="${pi/2.0} 0.0 0.0"/>
+        <collision>
+            <geometry>
+                <cylinder radius="${wheel_radius}" length="${wheel_thickness}"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi / 2.0} 0.0 0.0"/>
+        </collision>
     </link>
     
     <link name="caster_wheel_link">
@@ -50,6 +74,14 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <material name="wheel_color"/>
         </visual>
+        <xacro:sphere_inertia m="0.5" r="${(bottom_wheel_offset + wheel_radius)/2}"
+            xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <collision>
+            <geometry>
+                <sphere radius="${(bottom_wheel_offset + wheel_radius)/2}"/>
+            </geometry>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </collision>
     </link>
 
     <link name="base_foot_link">
